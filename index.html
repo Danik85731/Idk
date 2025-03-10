@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Play Audio</title>
+    <title>Button</title>
+    <style>
+        /* Стили для кнопки на всю страницу */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #playButton {
+            width: 100%;
+            height: 100%;
+            background-color: #4CAF50; /* Зеленый цвет */
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #playButton:active {
+            background-color: #45a049; /* Темно-зеленый при нажатии */
+        }
+    </style>
 </head>
 <body>
+    <!-- Кнопка на всю страницу -->
+    <button id="playButton">ЖМИ</button>
+
     <script>
         // Функция для воспроизведения звука
         function playAudio() {
@@ -15,14 +41,14 @@
             // Устанавливаем громкость на максимум
             audio.volume = 1.0;
 
-            // Пытаемся воспроизвести звук
+            // Воспроизводим звук
             audio.play().catch(error => {
-                console.error("Автовоспроизведение заблокировано. Пользователь должен взаимодействовать с сайтом.");
+                console.error("Ошибка воспроизведения звука:", error);
             });
         }
 
-        // Воспроизводим звук сразу после загрузки страницы
-        window.onload = playAudio;
+        // Назначаем функцию на кнопку
+        document.getElementById('playButton').addEventListener('click', playAudio);
     </script>
 </body>
 </html>
